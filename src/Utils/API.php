@@ -227,9 +227,9 @@ class API
                 ? 200 === $httpCode || 202 === $httpCode
                 : 200 === $httpCode;
 
-        if (!$isSuccess) {
-            throw new APIException($errorMessage, $httpCode, $response);
-        }
+        //if (!$isSuccess) {
+            //throw new APIException($errorMessage, $httpCode, $response);
+        //}
 
         return $response;
     }
