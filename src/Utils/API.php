@@ -138,7 +138,7 @@ class API
 
     public function reportInvoice($certificate, $secret, $signedInvoice, $invoiceHash, $egsUuid)
     {
-        echo $signedInvoice;
+        //echo $signedInvoice;
         return $this->post(
             '/invoices/reporting/single',
             [
@@ -211,7 +211,7 @@ class API
         ]);
 
         $response = curl_exec($curl);
-       echo $response;
+       //echo $response;
         $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
         if (curl_error($curl)) {
