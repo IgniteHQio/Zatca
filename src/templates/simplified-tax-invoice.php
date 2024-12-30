@@ -195,7 +195,7 @@ $taxTotalRender = Template::render('@simplified-tax-invoice/tax-total', [
             </cac:ClassifiedTaxCategory>
         </cac:Item>
         <cac:Price>
-            <cbc:PriceAmount currencyID="SAR"><?= zatcaNumberFormatLong(getLineItemUnitSubtotal($lineItem)); ?></cbc:PriceAmount>
+            <cbc:PriceAmount currencyID="SAR"><?= zatcaNumberFormatFree(getLineItemUnitSubtotal($lineItem)); ?></cbc:PriceAmount>
 <?php foreach ($lineItem['discounts'] ?? [] as $discount) { ?>
                 <cac:AllowanceCharge>
                     <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
