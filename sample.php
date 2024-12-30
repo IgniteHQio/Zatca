@@ -118,6 +118,8 @@ try {
 
 // ...
 
+echo $egs;
+
 $database = new EGSFileDatabase(__DIR__.'/private-secure-storage/solutions');
 
 // Option 1
