@@ -102,7 +102,7 @@ $egs = new EGS([
 
 
 // Obtain an OTP (One-Time Password) from the Fatoora portal https://fatoora.zatca.gov.sa/onboard-solution for each EGS registration.
-$otp = '071382';
+$otp = '644525';
 $solutionName = 'IGNITE';
 
 try {
@@ -113,7 +113,7 @@ try {
     // $e->getCode()
     // $e->getMessage()
     // $e->getResponse()
-    throw $e;
+    echo $e;
 }
 
 // ...
