@@ -169,7 +169,7 @@ $taxTotalRender = Template::render('@simplified-tax-invoice/tax-total', [
 
     <cac:LegalMonetaryTotal>
         <cbc:LineExtensionAmount currencyID="SAR"><?= zatcaNumberFormatShort($totalSubtotal); ?></cbc:LineExtensionAmount>
-        <cbc:TaxExclusiveAmount currencyID="SAR"><?= zatcaNumberFormatShort($totalSubtotal); ?></cbc:TaxExclusiveAmount>
+        <cbc:TaxExclusiveAmount currencyID="SAR"><?= zatcaNumberFormatNoWarning($totalSubtotal); ?></cbc:TaxExclusiveAmount>
         <cbc:TaxInclusiveAmount currencyID="SAR"><?= $total = zatcaNumberFormatShort($totalSubtotal + $totalTaxes); ?></cbc:TaxInclusiveAmount>
         <cbc:PrepaidAmount currencyID="SAR"><?= 0; ?></cbc:PrepaidAmount>
         <cbc:PayableAmount currencyID="SAR"><?= zatcaNumberFormatShort($totalSubtotal + $totalTaxes); ?></cbc:PayableAmount>
@@ -195,13 +195,13 @@ $taxTotalRender = Template::render('@simplified-tax-invoice/tax-total', [
             </cac:ClassifiedTaxCategory>
         </cac:Item>
         <cac:Price>
-            <cbc:PriceAmount currencyID="SAR"><?= zatcaNumberFormatShort(getLineItemUnitSubtotal($lineItem)); ?></cbc:PriceAmount>
+            <cbc:PriceAmount currencyID="SAR"><?= zatcaNumberFormatFree(getLineItemUnitSubtotal($lineItem)); ?></cbc:PriceAmount>
 <?php foreach ($lineItem['discounts'] ?? [] as $discount) { ?>
                 <cac:AllowanceCharge>
                     <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
                     <cbc:AllowanceChargeReason><?= $discount['reason']; ?></cbc:AllowanceChargeReason>
-                    <cbc:Amount currencyID="SAR"><?= zatcaNumberFormatShort($discount['amount']); ?></cbc:Amount>
-                    <cbc:BaseAmount currencyID="SAR"><?= zatcaNumberFormatShort(getLineItemUnitPrice($lineItem)); ?></cbc:BaseAmount>
+                    <cbc:Amount currencyID="SAR"><?= zatcaNumberFormatLong($discount['amount']); ?></cbc:Amount>
+                    <cbc:BaseAmount currencyID="SAR"><?= zatcaNumberFormatFree(getLineItemUnitPrice($lineItem)); ?></cbc:BaseAmount>
                 </cac:AllowanceCharge>
 <?php } ?>
         </cac:Price>
