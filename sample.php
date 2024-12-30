@@ -57,7 +57,7 @@ require ROOT_PATH . '/src/Invoice.php';
 //
 // - simulation: This is for testing purposes containing real validation with a real database storing EGSs and invoices. It does connect to a portal. You can generate OTPs from the Fatoora portal. You can view generate EGSs and invoices at the portal.
 // - production: This is used dangerously in production.
-EGS::setEnv('simulation');
+EGS::setEnv('production');
 
 // Disabled by default.
 // To prioritize code safety and prevent unexpected behavior, API warnings are disabled by default.
@@ -72,9 +72,9 @@ $egs = new EGS([
     // EGS Serial Number
     // You should generate a unique UUID for each EGS
     // Use Crypto::uuid4() to generate a secure UUID
-    'uuid' => '4c81f792-6aa0-4355-be22-c24293c54086',
+    'uuid' => 'a39bab9d-1e5a-4ae0-92a7-278b48714883',
 
-    'common_name' => 'Ignite-SIM-UN-01',
+    'common_name' => 'Ignite-UN-01',
     'model' => 'UN',
 
     // Known as CRN Number, License Number or Contract Number
@@ -102,7 +102,7 @@ $egs = new EGS([
 
 
 // Obtain an OTP (One-Time Password) from the Fatoora portal https://fatoora.zatca.gov.sa/onboard-solution for each EGS registration.
-$otp = '512274';
+$otp = '071382';
 $solutionName = 'IGNITE';
 
 try {
