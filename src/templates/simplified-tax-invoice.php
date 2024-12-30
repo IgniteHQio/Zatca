@@ -168,21 +168,21 @@ $taxTotalRender = Template::render('@simplified-tax-invoice/tax-total', [
 <?= $taxTotalRender; ?>
 
     <cac:LegalMonetaryTotal>
-        <cbc:LineExtensionAmount currencyID="SAR"><?= zatcaNumberFormatShort($totalSubtotal); ?></cbc:LineExtensionAmount>
-        <cbc:TaxExclusiveAmount currencyID="SAR"><?= zatcaNumberFormatShort($totalSubtotal); ?></cbc:TaxExclusiveAmount>
-        <cbc:TaxInclusiveAmount currencyID="SAR"><?= $total = zatcaNumberFormatShort($totalSubtotal + $totalTaxes); ?></cbc:TaxInclusiveAmount>
+        <cbc:LineExtensionAmount currencyID="SAR"><?= zatcaNumberFormatFree($totalSubtotal); ?></cbc:LineExtensionAmount>
+        <cbc:TaxExclusiveAmount currencyID="SAR"><?= zatcaNumberFormatFree($totalSubtotal); ?></cbc:TaxExclusiveAmount>
+        <cbc:TaxInclusiveAmount currencyID="SAR"><?= $total = zatcaNumberFormatFree($totalSubtotal + $totalTaxes); ?></cbc:TaxInclusiveAmount>
         <cbc:PrepaidAmount currencyID="SAR"><?= 0; ?></cbc:PrepaidAmount>
-        <cbc:PayableAmount currencyID="SAR"><?= zatcaNumberFormatShort($totalSubtotal + $totalTaxes); ?></cbc:PayableAmount>
+        <cbc:PayableAmount currencyID="SAR"><?= zatcaNumberFormatFree($totalSubtotal + $totalTaxes); ?></cbc:PayableAmount>
     </cac:LegalMonetaryTotal>
 <?php foreach ($LINE_ITEMS as $lineItem) {
     ?>
     <cac:InvoiceLine>
         <cbc:ID><?= $lineItem['id']; ?></cbc:ID>
         <cbc:InvoicedQuantity unitCode="PCE"><?= zatcaNumberFormatFree($lineItem['quantity']); ?></cbc:InvoicedQuantity>
-        <cbc:LineExtensionAmount currencyID="SAR"><?= zatcaNumberFormatShort(getLineItemSubtotal($lineItem)); ?></cbc:LineExtensionAmount>
+        <cbc:LineExtensionAmount currencyID="SAR"><?= zatcaNumberFormatFree(getLineItemSubtotal($lineItem)); ?></cbc:LineExtensionAmount>
         <cac:TaxTotal>
-            <cbc:TaxAmount currencyID="SAR"><?= zatcaNumberFormatShort(getLineItemTaxes($lineItem)); ?></cbc:TaxAmount>
-            <cbc:RoundingAmount currencyID="SAR"><?= zatcaNumberFormatShort(getLineItemTotal($lineItem)); ?></cbc:RoundingAmount>
+            <cbc:TaxAmount currencyID="SAR"><?= zatcaNumberFormatFree(getLineItemTaxes($lineItem)); ?></cbc:TaxAmount>
+            <cbc:RoundingAmount currencyID="SAR"><?= zatcaNumberFormatFree(getLineItemTotal($lineItem)); ?></cbc:RoundingAmount>
         </cac:TaxTotal>
         <cac:Item>
             <cbc:Name><?= $lineItem['name']; ?></cbc:Name>
@@ -195,13 +195,13 @@ $taxTotalRender = Template::render('@simplified-tax-invoice/tax-total', [
             </cac:ClassifiedTaxCategory>
         </cac:Item>
         <cac:Price>
-            <cbc:PriceAmount currencyID="SAR"><?= zatcaNumberFormatShort(getLineItemUnitSubtotal($lineItem)); ?></cbc:PriceAmount>
+            <cbc:PriceAmount currencyID="SAR"><?= zatcaNumberFormatFree(getLineItemUnitSubtotal($lineItem)); ?></cbc:PriceAmount>
 <?php foreach ($lineItem['discounts'] ?? [] as $discount) { ?>
                 <cac:AllowanceCharge>
                     <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
                     <cbc:AllowanceChargeReason><?= $discount['reason']; ?></cbc:AllowanceChargeReason>
-                    <cbc:Amount currencyID="SAR"><?= zatcaNumberFormatShort($discount['amount']); ?></cbc:Amount>
-                    <cbc:BaseAmount currencyID="SAR"><?= zatcaNumberFormatShort(getLineItemUnitPrice($lineItem)); ?></cbc:BaseAmount>
+                    <cbc:Amount currencyID="SAR"><?= zatcaNumberFormatFree($discount['amount']); ?></cbc:Amount>
+                    <cbc:BaseAmount currencyID="SAR"><?= zatcaNumberFormatFree(getLineItemUnitPrice($lineItem)); ?></cbc:BaseAmount>
                 </cac:AllowanceCharge>
 <?php } ?>
         </cac:Price>
