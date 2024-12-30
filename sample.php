@@ -72,38 +72,38 @@ $egs = new EGS([
     // EGS Serial Number
     // You should generate a unique UUID for each EGS
     // Use Crypto::uuid4() to generate a secure UUID
-    'uuid' => '00000000-0000-0000-0000-012345678000',
+    'uuid' => '4c81f792-6aa0-4355-be22-c24293c54086',
 
-    'common_name' => 'BRIGHTENINGTECH04',
-    'model' => 'IGNITE',
+    'common_name' => 'Ignite-SIM-UN-01',
+    'model' => 'UN',
 
     // Known as CRN Number, License Number or Contract Number
-    'crn_number' => '310145824500003',
+    'crn_number' => '311413225100003',
     // Known as VAT Name or Taxpayer Name
-    'vat_name' => 'Brightening Technology Company',
+    'vat_name' => 'AWABED Almanthar LLC',
     // Known as VAT Registration Number
     // Should be a valid 15 digits number starting and ending with "3"
-    'vat_number' => '310145824500003',
-    'branch_name' => 'Head Office',
-    'branch_industry' => 'IT',
+    'vat_number' => '311413225100003',
+    'branch_name' => 'UN',
+    'branch_industry' => 'Retail',
 
     'location' => [
         // https://splonline.com.sa/en/national-address-1/ for more info
         // Make sure the data is in Arabic
-        'building' => '6209',
-        'street' => 'Prince Mohammed Ibn Saad',
-        'city_subdivision' => 'Alaqiq',
+        'building' => '6777',
+        'street' => 'Riyadh, Nasar bin al dareef street',
+        'city_subdivision' => 'Alaqeeq Dist',
         'city' => 'Riyadh',
-        'plot_identification' => '2827',
-        'postal_zone' => '13515',
+        'plot_identification' => '3127',
+        'postal_zone' => '13511',
     ],
 ]);
 
 
 
 // Obtain an OTP (One-Time Password) from the Fatoora portal https://fatoora.zatca.gov.sa/onboard-solution for each EGS registration.
-$otp = '366651';
-$solutionName = 'Ignite';
+$otp = '512274';
+$solutionName = 'IGNITE';
 
 try {
     $egs->register($solutionName, $otp);
