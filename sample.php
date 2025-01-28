@@ -57,7 +57,7 @@ require ROOT_PATH . '/src/Invoice.php';
 //
 // - simulation: This is for testing purposes containing real validation with a real database storing EGSs and invoices. It does connect to a portal. You can generate OTPs from the Fatoora portal. You can view generate EGSs and invoices at the portal.
 // - production: This is used dangerously in production.
-EGS::setEnv('production');
+EGS::setEnv('simulation');
 
 // Disabled by default.
 // To prioritize code safety and prevent unexpected behavior, API warnings are disabled by default.
