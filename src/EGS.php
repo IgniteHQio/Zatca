@@ -70,7 +70,7 @@ class EGS
 
         $csrConfigFile = tmpfile();
         $csrConfig = Template::render('csr', [
-            'PRODUCTION_VALUE' => 'PREZATCA-Code-Signing',
+            'PRODUCTION_VALUE' => 'ZATCA-Code-Signing',
             'EGS_SERIAL_NUMBER' => "1-{$solutionName}|2-{$this->unit['model']}|3-{$this->unit['uuid']}",
             'VAT_REGISTRATION_NUMBER' => $this->unit['vat_number'],
             'BRANCH_LOCATION' => "{$this->unit['location']['building']} {$this->unit['location']['street']}, {$this->unit['location']['city']}",
