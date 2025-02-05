@@ -77,7 +77,7 @@ $lineItemsTable = [
 				<h3 align="center">
 					<b>رقم تسجيل ضريبة القيمة المضافة</b>
 					<span>:</span>
-					<?= $invoice->getEGS()['crn_number']; ?>
+					<?= $invoice->getVATName() ?>
 				</h3>
 			</td>
 
@@ -116,7 +116,7 @@ $lineItemsTable = [
 			<td><?= $transaction->contact->name ?></td>
 			<th>الاسم</th>
 			<th>Name</th>
-			<td><?= $transaction->business->name ?></td>
+			<td><?= $transaction->business->legal_registration_name ?></td>
 		</tr>
 		<tr>
 			<th>العنوان</th>
@@ -148,7 +148,7 @@ $lineItemsTable = [
 			<td><?= $transaction->contact->tax_number ?></td>
 			<th>الرقم الضريبي</th>
 			<th>.Tin No</th>
-			<td></td>
+			<td><?= $invoice->getVATName() ?></td>
 		</tr>
 	</table>
 	<br />
