@@ -55,7 +55,11 @@ class SignedInvoice
         $qrCode = new QrCode($this->getQR());
         $qrOutput = new Png();
 
-        $flavor = InvoiceCode::TAX === $this->getInvoice()->getCode() ? 'tax' : 'simplified';
+        if (isset($options['is_ignite_simplified'])) {
+            $flavor = 'ignite_simplified';
+        } else {
+            $flavor = InvoiceCode::TAX === $this->getInvoice()->getCode() ? 'tax' : 'simplified';
+        }
         list($render, $resultOptions) = Template::render(
             '@pdfs/'.$flavor,
             [
@@ -63,6 +67,7 @@ class SignedInvoice
                 'qr' => 'data:image/png;base64,'.base64_encode($qrOutput->output($qrCode, 124)),
 
                 'hasLogo' => $hasLogo = isset($options['logo']) ? (bool) $options['logo'] : false,
+                'transaction' => $options['transaction'] ?? []
             ],
             true
         );
