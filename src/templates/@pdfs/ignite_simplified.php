@@ -71,7 +71,7 @@ $lineItemsTable = [
 			<td style="width:20%;">
 				<img src="<?= htmlentities($qr); ?>" alt="QR Code" />
 			</td>
-			<td style="width:80%;">
+			<td style="width:60%;">
 				<h1 align="center">فاتورة ضريبية مبسطة</h1>
 				<h2 align="center"><?= $invoice->getEGS()['vat_name']; ?></h2>
 				<h3 align="center">
@@ -79,6 +79,10 @@ $lineItemsTable = [
 					<span>:</span>
 					<?= $invoice->getVATNumber() ?>
 				</h3>
+			</td>
+			<td style="width:20%;">
+			<img src="<?= htmlentities($transaction->business->logo); ?>" alt="Business Logo" />
+
 			</td>
 
 		</tr>
@@ -88,18 +92,18 @@ $lineItemsTable = [
 	<table <?= $tableAttrs; ?>>
 		<tr>
 			<th>رقم الفاتورة</th>
-			<th>Invoice Number</th>
 			<td colspan="4"><?= $invoice->getSerialNumber(); ?></td>
+			<th>Invoice Number</th>
 		</tr>
 		<tr>
 			<th>تاريخ الفاتورة</th>
-			<th>Date</th>
 			<td colspan="4"><?= $invoice->getFormattedIssueDate(); ?></td>
+			<th>Date</th>
 		</tr>
 		<tr>
 			<th>حالة السداد</th>
-			<th>Payment Status</th>
 			<td colspan="4"><?= $transaction->payment_status ?></td>
+			<th>Payment Status</th>
 		</tr>
 	</table>
 
@@ -112,43 +116,43 @@ $lineItemsTable = [
 		</tr>
 		<tr>
 			<th>الاسم</th>
-			<th>Name</th>
 			<td><?= $transaction->contact->name ?></td>
-			<th>الاسم</th>
 			<th>Name</th>
+			<th>الاسم</th>
 			<td><?= $transaction->business->legal_registration_name ?></td>
+			<th>Name</th>
 		</tr>
 		<tr>
 			<th>العنوان</th>
-			<th>Address</th>
 			<td></td>
+			<th>Address</th>
 			<th>العنوان</th>
-			<th>Address</th>
 			<td></td>
+			<th>Address</th>
 		</tr>
 		<tr>
 			<th>رقم الجوال</th>
-			<th>Mobile Number</th>
 			<td><?= $transaction->contact->mobile ?></td>
-			<th>رقم الجوال</th>
 			<th>Mobile Number</th>
+			<th>رقم الجوال</th>
 			<td></td>
+			<th>Mobile Number</th>
 		</tr>
 		<tr>
 			<th>البريد الإلكتروني</th>
-			<th>Email</th>
 			<td><?= $transaction->contact->email ?></td>
-			<th>البريد الإلكتروني</th>
 			<th>Email</th>
+			<th>البريد الإلكتروني</th>
 			<td></td>
+			<th>Email</th>
 		</tr>
 		<tr>
 			<th>الرقم الضريبي</th>
-			<th>.Tin No</th>
 			<td><?= $transaction->contact->tax_number ?></td>
-			<th>الرقم الضريبي</th>
 			<th>.Tin No</th>
+			<th>الرقم الضريبي</th>
 			<td><?= $invoice->getVATNumber() ?></td>
+			<th>.Tin No</th>
 		</tr>
 	</table>
 	<br />
