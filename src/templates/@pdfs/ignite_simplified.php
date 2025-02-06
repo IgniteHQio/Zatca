@@ -71,7 +71,8 @@ $lineItemsTable = [
 			<td style="width:20%;">
 				<img src="<?= htmlentities($qr); ?>" alt="QR Code" />
 			</td>
-			<td style="width:60%;">
+			<td style="width:80%;">
+			<img src="<?= htmlentities($transaction->business->logo); ?>" alt="Business Logo" />
 				<h1 align="center">فاتورة ضريبية مبسطة</h1>
 				<h2 align="center"><?= $invoice->getEGS()['vat_name']; ?></h2>
 				<h3 align="center">
@@ -80,11 +81,6 @@ $lineItemsTable = [
 					<?= $invoice->getVATNumber() ?>
 				</h3>
 			</td>
-			<td style="width:20%;">
-			<img src="<?= htmlentities($transaction->business->logo); ?>" alt="Business Logo" />
-
-			</td>
-
 		</tr>
 
 	</table>
