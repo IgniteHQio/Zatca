@@ -76,7 +76,15 @@ $lineItemsTable = [
 				<h1 align="center">فاتورة ضريبية مبسطة</h1>
 				<h2 align="center"><?= $invoice->getEGS()['vat_name']; ?></h2>
 				<h3 align="center">
-					<b>رقم تسجيل ضريبة القيمة المضافة</b>
+					<?php
+						$type = $invoice->getType();
+
+						if ($type == 381) {
+							'<b>إشعار إئتمان</b>';
+						} else {
+							 '<b>رقم تسجيل ضريبة القيمة المضافة</b>';
+						}
+					?>
 					<span>:</span>
 					<?= $invoice->getVATNumber() ?>
 				</h3>
