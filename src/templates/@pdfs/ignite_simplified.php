@@ -73,20 +73,18 @@ $lineItemsTable = [
 			</td>
 			<td style="width:80%;">
 			<img style="height:100px; width: 100px;" src="<?= htmlentities($transaction->business->logo); ?>" alt="Business Logo" />
+			<?php
+				$type = $invoice->getType();
+					if ($type == 381) {
+								echo '<h1 align="center">إشعار إئتمان</h1>';
+							} else {
+								echo '<h1 align="center">فاتورة ضريبية مبسطة</h1>';
+							}
+						?>
 				<h1 align="center">فاتورة ضريبية مبسطة</h1>
 				<h2 align="center"><?= $invoice->getEGS()['vat_name']; ?></h2>
 				<h3 align="center">
-					<b>
-						<?php
-							$type = $invoice->getType();
-
-							if ($type == 381) {
-								echo '<b>إشعار إئتمان</b>';
-							} else {
-								echo '<b>رقم تسجيل ضريبة القيمة المضافة</b>';
-							}
-						?>
-					</b>
+				<b>رقم تسجيل ضريبة القيمة المضافة</b>
 					<span>:</span>
 					<?= $invoice->getVATNumber() ?>
 				</h3>
