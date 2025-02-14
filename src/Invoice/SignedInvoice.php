@@ -72,7 +72,7 @@ class SignedInvoice
                 'hasLogo' => $hasLogo = isset($options['logo']) ? (bool) $options['logo'] : false,
                 'transaction' => $options['transaction'] ?? [],
                 //'htmlqr' =>$htmlqrOutput->output($qrCode)
-                'svgqr' =>$svgqrOutput->output($qrCode,200)
+                'svgqr' =>str_replace('<?xml version="1.0"?>', '', $svgqrOutput->output($qrCode,200))
             ],
             true
         );
