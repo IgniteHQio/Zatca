@@ -6,6 +6,7 @@ use Malik12tree\ZATCA\Invoice;
 use Malik12tree\ZATCA\Invoice\Enums\InvoiceCode;
 use Malik12tree\ZATCA\Utils\Rendering\Template;
 use Mpdf\QrCode\Output\Png;
+use Mpdf\QrCode\Output\Html;
 use Mpdf\QrCode\QrCode;
 
 class SignedInvoice
