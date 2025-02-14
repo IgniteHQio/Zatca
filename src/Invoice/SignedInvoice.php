@@ -52,10 +52,9 @@ class SignedInvoice
 
     public function toHTML($options = [], $internalOnlyParameter__withResult = false)
     {
-        dd($this->getQR());
+       
         $qrCode = new QrCode($this->getQR());
         $qrOutput = new Png();
-
         if (isset($options['is_ignite_simplified'])) {
             $flavor = 'ignite_simplified';
         } else {
@@ -65,7 +64,7 @@ class SignedInvoice
             '@pdfs/'.$flavor,
             [
                 'invoice' => $this->getInvoice(),
-                'qr' => 'data:image/png;base64,'.base64_encode($qrOutput->output($qrCode, 124)),
+                'qr' => 'data:image/png;base64,'.base64_encode($qrOutput->output($qrCode, 200)),
 
                 'hasLogo' => $hasLogo = isset($options['logo']) ? (bool) $options['logo'] : false,
                 'transaction' => $options['transaction'] ?? []
