@@ -52,7 +52,7 @@ class SignedInvoice
 
     public function toHTML($options = [], $internalOnlyParameter__withResult = false)
     {
-        dd($this->getQR())
+        dd($this->getQR());
         $qrCode = new QrCode($this->getQR());
         $qrOutput = new Png();
 
