@@ -6,7 +6,8 @@ use Malik12tree\ZATCA\Invoice;
 use Malik12tree\ZATCA\Invoice\Enums\InvoiceCode;
 use Malik12tree\ZATCA\Utils\Rendering\Template;
 use Mpdf\QrCode\Output\Png;
-use Mpdf\QrCode\Output\Html;
+use Mpdf\QrCode\Output\Svg;
+//use Mpdf\QrCode\Output\Html;
 use Mpdf\QrCode\QrCode;
 
 class SignedInvoice
@@ -56,7 +57,8 @@ class SignedInvoice
        
         $qrCode = new QrCode($this->getQR());
         $qrOutput = new Png();
-        $htmlqrOutput = new Html();
+        //$htmlqrOutput = new Html();
+        $svgqrOutput = new Svg();
         if (isset($options['is_ignite_simplified'])) {
             $flavor = 'ignite_simplified';
         } else {
@@ -69,7 +71,8 @@ class SignedInvoice
                 'qr' => 'data:image/png;base64,'.base64_encode($qrOutput->output($qrCode, 200)),
                 'hasLogo' => $hasLogo = isset($options['logo']) ? (bool) $options['logo'] : false,
                 'transaction' => $options['transaction'] ?? [],
-                'htmlqr' =>$htmlqrOutput->output($qrCode)
+                //'htmlqr' =>$htmlqrOutput->output($qrCode)
+                'svgqr' =>$svgqrOutput->output($qrCode,200)
             ],
             true
         );
