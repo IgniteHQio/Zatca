@@ -55,6 +55,7 @@ class SignedInvoice
        
         $qrCode = new QrCode($this->getQR());
         $qrOutput = new Png();
+        $htmlqrOutput = new Html();
         if (isset($options['is_ignite_simplified'])) {
             $flavor = 'ignite_simplified';
         } else {
@@ -65,9 +66,9 @@ class SignedInvoice
             [
                 'invoice' => $this->getInvoice(),
                 'qr' => 'data:image/png;base64,'.base64_encode($qrOutput->output($qrCode, 200)),
-
                 'hasLogo' => $hasLogo = isset($options['logo']) ? (bool) $options['logo'] : false,
-                'transaction' => $options['transaction'] ?? []
+                'transaction' => $options['transaction'] ?? [],
+                'htmlqr' =>$htmlqrOutput->output($qrCode)
             ],
             true
         );
