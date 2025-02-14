@@ -69,8 +69,8 @@ $lineItemsTable = [
 	<table style="width:100%;">
 		<tr>
 			<td style="width:30%;">
-				<!-- <?= $svgqr; ?> -->
-				<img src="<?= htmlentities($svgqr); ?>" alt="QR Code" />
+			<img src="<?= $svgqr; ?>" alt="QR Code" />
+				<!-- <img src="<?= htmlentities($qr); ?>" alt="QR Code" /> -->
 			</td>
 			<td style="width:70%;">
 			<img style="height:100px; width: 100px;" src="<?= htmlentities($transaction->business->logo); ?>" alt="Business Logo" />
