@@ -69,7 +69,7 @@ $lineItemsTable = [
 	<table style="width:100%;">
 		<tr>
 			<td style="width:30%;">
-			<?= htmlentities($svgqr); ?>
+			<?= $svgqr; ?>
 				<!-- <img src="<?= htmlentities($qr); ?>" alt="QR Code" /> -->
 			</td>
 			<td style="width:70%;">
