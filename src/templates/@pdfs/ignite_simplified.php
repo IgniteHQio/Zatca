@@ -68,10 +68,10 @@ $lineItemsTable = [
 	</style>
 	<table style="width:100%;">
 		<tr>
-			<td style="width:20%;">
+			<td style="width:30%;">
 				<img src="<?= htmlentities($qr); ?>" alt="QR Code" />
 			</td>
-			<td style="width:80%;">
+			<td style="width:70%;">
 			<img style="height:100px; width: 100px;" src="<?= htmlentities($transaction->business->logo); ?>" alt="Business Logo" />
 			<?php
 				$type = $invoice->getType();
@@ -91,7 +91,7 @@ $lineItemsTable = [
 		</tr>
 
 	</table>
-
+	<br/>					
 	<table <?= $tableAttrs; ?>>
 		<tr>
 			<th>رقم الفاتورة</th>
