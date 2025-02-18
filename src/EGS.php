@@ -214,7 +214,7 @@ class EGS
         return $this->api->clearanceInvoice(
             $this->unit['production_certificate'],
             $this->unit['production_api_secret'],
-            $signedInvoice->getInvoice(),
+            $signedInvoice->getInvoice()->cleanedXML(),
             $signedInvoice->getInvoiceHash(),
             $this->unit['uuid']
         );
