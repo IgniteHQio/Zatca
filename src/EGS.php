@@ -205,6 +205,20 @@ class EGS
             $this->unit['uuid']
         );
     }
+    public function clearanceInvoiceNotSigned($signedInvoice)
+    {
+        if (!$this->unit['production_api_secret'] || !$this->unit['production_certificate']) {
+            throw new \Exception('EGS is missing a production API certificate/secret to report the invoice.');
+        }
+
+        return $this->api->clearanceInvoice(
+            $this->unit['production_certificate'],
+            $this->unit['production_api_secret'],
+            $signedInvoice->getInvoice(),
+            $signedInvoice->getInvoiceHash(),
+            $this->unit['uuid']
+        );
+    }
 
     public function getExpiryDate()
     {
