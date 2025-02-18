@@ -279,7 +279,7 @@ class Invoice
         return base64_encode($qrTLV);
     }
 
-    private function cleanedXML()
+    public function cleanedXML()
     {
         $document = new \DOMDocument();
         $document->loadXML($this->xml);
