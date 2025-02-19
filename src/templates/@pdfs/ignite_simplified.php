@@ -128,7 +128,7 @@ $lineItemsTable = [
 				<tr>
 					<th>رقم الإشعار الدائن</th>
 					<td colspan="4">' . $invoice->getSerialNumber() . '</td>
-					<th>Credit Note #</th>
+					<th># Credit Note</th>
 				</tr>
 				<tr>
 					<th>تاريخ الائتمان</th>
