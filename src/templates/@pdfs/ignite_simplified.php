@@ -77,16 +77,16 @@ $lineItemsTable = [
 			<?php
 				$type = $invoice->getType();
 				$code = $invoice->getCode();
-				if ($type == 381 && $code==0100000) {
+				if ($type == 381 && $code=="0100000") {
 					echo '<h1 align="center">اشعار دائن فاتورة ضريبية</h1>';
 				} 
-				else if(($type == 381 && $code==0200000)) {
+				else if(($type == 381 && $code=="0200000")) {
 					echo '<h1 align="center">اشعار دائن فاتورة ضريبية مبسطة</h1>';
 				}
-				if ($type == 388 && $code==0100000) {
+				if ($type == 388 && $code=="0100000") {
 					echo '<h1 align="center">فاتورة ضريبية</h1>';
 				} 
-				else if(($type == 388 && $code==0200000)) {
+				else if(($type == 388 && $code=="0200000")) {
 					echo '<h1 align="center">فاتورة ضريبية مبسطة</h1>';
 				}
 				?>
@@ -102,46 +102,46 @@ $lineItemsTable = [
 	</table>
 	<br/>
 	<?php
-		$type = $invoice->getType();
-		$code = $invoice->getCode();
-		if ($type == 388){
-			echo '<table <?= $tableAttrs; ?>><tr>
+	$type = $invoice->getType();
+	$code = $invoice->getCode();
+
+	if ($type == 388) {
+		echo '<table ' . $tableAttrs . '>
+				<tr>
 					<th>رقم الفاتورة</th>
-					<td colspan="4"><?= $invoice->getSerialNumber(); ?></td>
+					<td colspan="4">' . $invoice->getSerialNumber() . '</td>
 					<th>Invoice Number</th>
 				</tr>
 				<tr>
 					<th>تاريخ الفاتورة</th>
-					<td colspan="4"><?= $invoice->getFormattedIssueDate(); ?></td>
+					<td colspan="4">' . $invoice->getFormattedIssueDate() . '</td>
 					<th>Date</th>
 				</tr>
 				<tr>
 					<th>حالة السداد</th>
-					<td colspan="4"><?= $transaction->payment_status ?></td>
+					<td colspan="4">' . $transaction->payment_status . '</td>
 					<th>Payment Status</th>
 				</tr>
 			</table>';
-		}
-		else if($type == 381)
-		{
-			echo '<table <?= $tableAttrs; ?>>
+	} else if ($type == 381) {
+		echo '<table ' . $tableAttrs . '>
 				<tr>
 					<th>رقم الإشعار الدائن</th>
-					<td colspan="4"><?= $invoice->getSerialNumber(); ?></td>
+					<td colspan="4">' . $invoice->getSerialNumber() . '</td>
 					<th>Credit Note #</th>
 				</tr>
 				<tr>
 					<th>تاريخ الائتمان</th>
-					<td colspan="4"><?= $invoice->getFormattedIssueDate(); ?></td>
+					<td colspan="4">' . $invoice->getFormattedIssueDate() . '</td>
 					<th>Credit Note Date</th>
 				</tr>
 				<tr>
 					<th>حالة السداد</th>
-					<td colspan="4"><?= $transaction->payment_status ?></td>
+					<td colspan="4">' . $transaction->payment_status . '</td>
 					<th>Payment Status</th>
 				</tr>
 			</table>';
-		}
+	}
 	?>
 	
 
