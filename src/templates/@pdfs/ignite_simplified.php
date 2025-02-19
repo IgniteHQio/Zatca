@@ -56,25 +56,25 @@ $lineItemsTable = [
 			border-collapse: collapse;
 			text-align: center;
 		}
-
+		
 		.invoice-render__totals td:nth-child(1) {
 			width: 75%;
 			text-align: start;
 		}
-
+		
 		.invoice-render__totals td:nth-child(2) {
 			width: 25%;
 		}
-	</style>
+		</style>
 	<table style="width:100%;">
 		<tr>
 			<td style="width:30%;">
-			<?= $svgqr; ?>
+				<?= $svgqr; ?>
 				<!-- <img src="<?= htmlentities($qr); ?>" alt="QR Code" /> -->
 			</td>
 			<td style="width:70%;">
-			<img style="height:100px; width: 100px;" src="<?= htmlentities($transaction->business->logo); ?>" alt="Business Logo" />
-			<?php
+				<img style="height:100px; width: 100px;" src="<?= htmlentities($transaction->business->logo); ?>" alt="Business Logo" />
+				<?php
 				$type = $invoice->getType();
 				$code = $invoice->getCode();
 				if ($type == 381 && $code=="0100000") {
@@ -92,13 +92,13 @@ $lineItemsTable = [
 				?>
 				<h2 align="center"><?= $invoice->getEGS()['vat_name']; ?></h2>
 				<h3 align="center">
-				<b>رقم تسجيل ضريبة القيمة المضافة</b>
+					<b>رقم تسجيل ضريبة القيمة المضافة</b>
 					<span>:</span>
 					<?= $invoice->getVATNumber() ?>
 				</h3>
 			</td>
 		</tr>
-
+		
 	</table>
 	<br/>
 	<?php
@@ -139,6 +139,16 @@ $lineItemsTable = [
 					<th>حالة السداد</th>
 					<td colspan="4">' . $transaction->payment_status . '</td>
 					<th>Payment Status</th>
+				</tr>
+				<tr>
+					<th>رقم الفاتورة</th>
+					<td colspan="4">' . $transaction->parent_invoice_no . '</td>
+					<th>Invoice Number</th>
+				</tr>
+				<tr>
+					<th>تاريخ الفاتورة</th>
+					<td colspan="4">' . $transaction->parent_transaction_date . '</td>
+					<th>Invoice Date</th>
 				</tr>
 			</table>';
 	}
