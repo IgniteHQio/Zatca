@@ -26,10 +26,10 @@ class SignedPDFAInvoice
             'PDFAversion' => 3
         ]);
         // Define PDF/A-3A metadata
-        // $mpdf->SetMetadata([
-        //     'pdfaid:part' => '3',
-        //     'pdfaid:conformance' => 'A' // Set to 'A' for full compliance
-        // ]);
+        $mpdf->SetMetadata([
+            'pdfaid:part' => '3',
+            'pdfaid:conformance' => 'A' // Set to 'A' for full compliance
+        ]);
         $mpdf->autoScriptToLang = true;
         $mpdf->autoLangToFont = true;
         $mpdf->SetDefaultFontSize(7);
@@ -50,10 +50,10 @@ class SignedPDFAInvoice
         
 
         // Enable structure for PDF/A-3A
-        $mpdf->SetTitle('Invoice');
-        $mpdf->SetAuthor('Ignite');
-        $mpdf->SetLanguage('en');
-        $mpdf->SetDisplayMode('fullpage');
+        // $mpdf->SetTitle('Invoice');
+        // $mpdf->SetAuthor('Ignite');
+        // $mpdf->SetLanguage('en');
+        // $mpdf->SetDisplayMode('fullpage');
 
         $mpdf->SetAssociatedFiles([[
             'name' => $this->getInvoice()->attachmentName('xml'),
