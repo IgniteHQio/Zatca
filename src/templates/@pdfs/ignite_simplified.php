@@ -238,10 +238,10 @@ $lineItemsTable = [
 		<tr>
 			<th>رمز بريدي</th>
 			<td><?= $invoice->getCustomerInfo()['postal_zone'] ?></td>
-			<th>.Building No</th>
+			<th>.Zip code</th>
 			<th>رمز بريدي</th>
 			<td><?= $invoice->getEGS()['location']['postal_zone'] ?></td>
-			<th>.Tin No</th>
+			<th>.Zip code</th>
 		</tr>
 		<tr>
 			<th>معرف آخر</th>
