@@ -23,7 +23,8 @@ class SignedPDFAInvoice
             'PDFAauto' => true,
             'mode' => 'utf-8',
             'tempDir' => sys_get_temp_dir(),
-            'PDFAversion' => 3
+            'PDFAversion' => 3,
+            'PDFAconformance' => 'A'
         ]);
         // Define PDF/A-3A metadata
         // $mpdf->SetMetadata([
