@@ -50,10 +50,10 @@ class SignedPDFAInvoice
         
 
         // Enable structure for PDF/A-3A
-        // $mpdf->SetTitle('Invoice');
-        // $mpdf->SetAuthor('Ignite');
-        // $mpdf->SetLanguage('en');
-        // $mpdf->SetDisplayMode('fullpage');
+        $mpdf->SetTitle('Invoice');
+        $mpdf->SetAuthor('Ignite');
+        $mpdf->SetLanguage('en');
+        $mpdf->SetDisplayMode('fullpage');
 
         $mpdf->SetAssociatedFiles([[
             'name' => $this->getInvoice()->attachmentName('xml'),
