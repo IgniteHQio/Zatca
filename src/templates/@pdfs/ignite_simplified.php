@@ -202,6 +202,56 @@ $lineItemsTable = [
 			<td><?= $invoice->getVATNumber() ?></td>
 			<th>.Tin No</th>
 		</tr>
+		<?php if ($code === "0100000") : ?>
+		<tr>
+			<th>رقم المبنى</th>
+			<td><?= $invoice->getCustomerInfo()['building'] ?></td>
+			<th>.Building No</th>
+			<th>رقم المبنى</th>
+			<td><?= $invoice->getEGS()['location']['building'] ?></td>
+			<th>.Building No</th>
+		</tr>
+		<tr>
+			<th>الشارع</th>
+			<td><?= $invoice->getCustomerInfo()['street'] ?></td>
+			<th>.Street</th>
+			<th>الشارع</th>
+			<td><?= $invoice->getEGS()['location']['street'] ?></td>
+			<th>.Street</th>
+		</tr>
+		<tr>
+			<th>مدينة</th>
+			<td><?= $invoice->getCustomerInfo()['city'] ?></td>
+			<th>.City</th>
+			<th>مدينة</th>
+			<td><?= $invoice->getEGS()['location']['city'] ?></td>
+			<th>.City</th>
+		</tr>
+		<tr>
+			<th>الرقم الفرعي</th>
+			<td><?= $invoice->getCustomerInfo()['plot_identification'] ?></td>
+			<th>.Additional No</th>
+			<th>الرقم الفرعي</th>
+			<td><?= $invoice->getEGS()['location']['plot_identification'] ?></td>
+			<th>.Additional No</th>
+		</tr>
+		<tr>
+			<th>رمز بريدي</th>
+			<td><?= $invoice->getCustomerInfo()['postal_zone'] ?></td>
+			<th>.Building No</th>
+			<th>رمز بريدي</th>
+			<td><?= $invoice->getEGS()['location']['postal_zone'] ?></td>
+			<th>.Tin No</th>
+		</tr>
+		<tr>
+			<th>معرف آخر</th>
+			<td><?= $invoice->getCustomerInfo()['crn_number'] ?></td>
+			<th>.Other seller id</th>
+			<th>معرف آخر</th>
+			<td><?= $invoice->getEGS()['crn_number'] ?></td>
+			<th>.Other seller id</th>
+		</tr>
+		<?php endif; ?>
 	</table>
 	<br />
 
