@@ -30,7 +30,7 @@ class SignedPDFAInvoice
         //     'pdfaid:part' => '3',
         //     'pdfaid:conformance' => 'A' // Set to 'A' for full compliance
         // ]);
-        $mpdf->pdfaConformance = 'A';
+        //$mpdf->pdfaConformance = 'A';
         $mpdf->autoScriptToLang = true;
         $mpdf->autoLangToFont = true;
         $mpdf->SetDefaultFontSize(7);
@@ -59,10 +59,19 @@ class SignedPDFAInvoice
         $mpdf->SetAssociatedFiles([[
             'name' => $this->getInvoice()->attachmentName('xml'),
             'mime' => 'text/xml',
-            'description' => '',
+            'description' => 'invoice',
             'AFRelationship' => 'Alternative',
             'path' => stream_get_meta_data($tmpXml)['uri'],
         ]]);
+
+        $rdf  = '<rdf:Description rdf:about="" xmlns:zf="urn:ferd:pdfa:CrossIndustryDocument:invoice:1p0#">'."\n";
+        $rdf .= '  <zf:DocumentType>INVOICE</zf:DocumentType>'."\n";
+        $rdf .= '  <zf:DocumentFileName>ZUGFeRD-invoice.xml</zf:DocumentFileName>'."\n";
+        $rdf .= '  <zf:Version>1.0</zf:Version>'."\n";
+        $rdf .= '  <zf:ConformanceLevel>BASIC</zf:ConformanceLevel>'."\n";
+        $rdf .= '</rdf:Description>'."\n";
+
+        $mpdf->SetAdditionalXmpRdf($rdf);
 
         $data = $mpdf->OutputBinaryData();
         fclose($tmpXml);
