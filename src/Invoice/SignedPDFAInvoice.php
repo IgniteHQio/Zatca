@@ -21,8 +21,14 @@ class SignedPDFAInvoice
         $mpdf = new Mpdf($resultOptions['mpdf'] + [
             'PDFA' => true,
             'PDFAauto' => true,
-
+            'mode' => 'utf-8',
             'tempDir' => sys_get_temp_dir(),
+            'PDFAversion' => 3
+        ]);
+        // Define PDF/A-3A metadata
+        $mpdf->SetMetadata([
+            'pdfaid:part' => '3',
+            'pdfaid:conformance' => 'A' // Set to 'A' for full compliance
         ]);
         $mpdf->autoScriptToLang = true;
         $mpdf->autoLangToFont = true;
@@ -42,6 +48,12 @@ class SignedPDFAInvoice
         //fwrite($tmpXml, $this->signedInvoice->getSignedInvoiceXML());
         fwrite($tmpXml, $options['encodedxml']);
         
+
+        // Enable structure for PDF/A-3A
+        $mpdf->SetTitle('Invoice');
+        $mpdf->SetAuthor('Ignite');
+        $mpdf->SetLanguage('en');
+        $mpdf->SetDisplayMode('fullpage');
 
         $mpdf->SetAssociatedFiles([[
             'name' => $this->getInvoice()->attachmentName('xml'),
