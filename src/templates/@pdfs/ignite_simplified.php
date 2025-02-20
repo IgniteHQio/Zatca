@@ -170,6 +170,7 @@ $lineItemsTable = [
 			<td><?= $transaction->business->legal_registration_name ?></td>
 			<th>Name</th>
 		</tr>
+		<?php if ($code !== "0100000") : ?>
 		<tr>
 			<th>العنوان</th>
 			<td></td>
@@ -178,6 +179,7 @@ $lineItemsTable = [
 			<td></td>
 			<th>Address</th>
 		</tr>
+		<?php endif; ?>
 		<tr>
 			<th>رقم الجوال</th>
 			<td><?= $transaction->contact->mobile ?></td>
