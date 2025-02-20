@@ -92,4 +92,8 @@ class SignedInvoice
     {
         return new SignedPDFInvoice($this, $options);
     }
+    public function toPDFA($options = [])
+    {
+        return new SignedPDFAInvoice($this, $options);
+    }
 }
