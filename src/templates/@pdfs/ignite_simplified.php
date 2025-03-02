@@ -89,6 +89,9 @@ $lineItemsTable = [
 				else if(($type == 388 && $code=="0200000")) {
 					echo '<h1 align="center">فاتورة ضريبية مبسطة</h1>';
 				}
+				else if(($type == 383)) {
+					echo '<h1 align="center">إﺷﻌﺎر ﻣﺪﻳﻦ</h1>';
+				}
 				?>
 				<h2 align="center"><?= $invoice->getEGS()['vat_name']; ?></h2>
 				<h3 align="center">
@@ -134,6 +137,35 @@ $lineItemsTable = [
 					<th>تاريخ الائتمان</th>
 					<td colspan="4">' . $invoice->getFormattedIssueDate() . '</td>
 					<th>Credit Note Date</th>
+				</tr>
+				<tr>
+					<th>حالة السداد</th>
+					<td colspan="4">' . $transaction->payment_status . '</td>
+					<th>Payment Status</th>
+				</tr>
+				<tr>
+					<th>رقم الفاتورة</th>
+					<td colspan="4">' . $transaction->parent_invoice_no . '</td>
+					<th>Invoice Number</th>
+				</tr>
+				<tr>
+					<th>تاريخ الفاتورة</th>
+					<td colspan="4">' . $transaction->parent_transaction_date . '</td>
+					<th>Invoice Date</th>
+				</tr>
+			</table>';
+	}
+	else if ($type == 383) {
+		echo '<table ' . $tableAttrs . '>
+				<tr>
+					<th>رقم إﺷﻌﺎر ﻣﺪﻳﻦ </th>
+					<td colspan="4">' . $invoice->getSerialNumber() . '</td>
+					<th># Debit Note</th>
+				</tr>
+				<tr>
+					<th>تاريخ الائتمان</th>
+					<td colspan="4">' . $invoice->getFormattedIssueDate() . '</td>
+					<th>Debit Note Date</th>
 				</tr>
 				<tr>
 					<th>حالة السداد</th>
