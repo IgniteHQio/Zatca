@@ -12,8 +12,13 @@ use function Malik12tree\ZATCA\Utils\zatcaNumberFormatShort;
 $tableAttrs = 'cellpadding="5px" autosize="1" border="1" width="100%"';
 const UNIT = 'ريال';
 const F_UNIT = ' ' . UNIT;
-$currencySvg = file_get_contents(__DIR__ . '/../../../resources/images/sar.svg');
-$formattedCurrency = ' ' . $currencySvg;
+$svgContent = file_get_contents(__DIR__ . '/../../../resources/images/sar.svg');
+$svgContent = preg_replace(
+	'/<svg([^>]*)>/',
+	'<svg$1 width="16" height="16" style="vertical-align:middle;">',
+	$svgContent
+);
+$formattedCurrency = ' ' . $svgContent;
 
 $lineItemsTable = [
 	'name' => [
