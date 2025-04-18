@@ -68,10 +68,15 @@ $lineItemsTable = [
 		</style>
 	<table style="width:100%;">
 		<tr>
-			<td style="width:30%;">
-				<?= $svgqr; ?>
+		<td style="width:30%;">
+            <?= $svgqr; ?>
+            <!-- Add your custom SVG here -->
+            <?= file_get_contents(__DIR__ . '/../../../resources/images/custom-logo.svg'); ?>
+        </td>
+			<!-- <td style="width:30%;">
+				<?= $svgqr; ?> -->
 				<!-- <img src="<?= htmlentities($qr); ?>" alt="QR Code" /> -->
-			</td>
+			<!-- </td> -->
 			<td style="width:70%;">
 				<img style="height:100px; width: 100px;" src="<?= htmlentities($transaction->business->logo); ?>" alt="Business Logo" />
 				<?php
