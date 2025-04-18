@@ -12,6 +12,8 @@ use function Malik12tree\ZATCA\Utils\zatcaNumberFormatShort;
 $tableAttrs = 'cellpadding="5px" autosize="1" border="1" width="100%"';
 const UNIT = 'ريال';
 const F_UNIT = ' ' . UNIT;
+$currencySvg = file_get_contents(__DIR__ . '/../../../resources/images/sar.svg');
+$formattedCurrency = ' ' . $currencySvg;
 
 $lineItemsTable = [
 	'name' => [
@@ -23,28 +25,28 @@ $lineItemsTable = [
 	'unit_price' => [
 		'ar' => 'سعر الوحدة',
 
-		'@map' => static function ($value, $row) {
-			return zatcaNumberFormatFree($value) . F_UNIT;
+		'@map' => static function ($value, $row) use ($formattedCurrency) {
+			return zatcaNumberFormatFree($value) . $formattedCurrency;
 		},
 	],
 	'discount' => [
 		'ar' => 'الخصم',
-		'@map' => static function ($value, $row) {
-			return +zatcaNumberFormatLong(getLineItemDiscount($row)) . F_UNIT;
+		'@map' => static function ($value, $row) use ($formattedCurrency) {
+			return +zatcaNumberFormatLong(getLineItemDiscount($row)) . $formattedCurrency;
 		},
 	],
 	'vat_percent' => [
 		'en' => 'VAT Percentage',
 		'ar' => 'نسبة للضريبة',
 
-		'@map' => static function ($value, $row) {
+		'@map' => static function ($value, $row)  {
 			return zatcaNumberFormatFree($value * 100) . '%';
 		},
 	],
 	'total' => [
 		'ar' => 'المجموع',
-		'@map' => static function ($value, $row) {
-			return zatcaNumberFormatShort(getLineItemTotal($row)) . F_UNIT;
+		'@map' => static function ($value, $row) use ($formattedCurrency) {
+			return zatcaNumberFormatShort(getLineItemTotal($row)) . $formattedCurrency;
 		},
 	],
 ];
@@ -68,15 +70,10 @@ $lineItemsTable = [
 		</style>
 	<table style="width:100%;">
 		<tr>
-		<td style="width:30%;">
-            <?= $svgqr; ?>
-            <!-- Add your custom SVG here -->
-            <?= file_get_contents(__DIR__ . '/../../../resources/images/sar.svg'); ?>
-        </td>
-			<!-- <td style="width:30%;">
-				<?= $svgqr; ?> -->
+			<td style="width:30%;">
+				<?= $svgqr; ?>
 				<!-- <img src="<?= htmlentities($qr); ?>" alt="QR Code" /> -->
-			<!-- </td> -->
+			</td>
 			<td style="width:70%;">
 				<img style="height:100px; width: 100px;" src="<?= htmlentities($transaction->business->logo); ?>" alt="Business Logo" />
 				<?php
@@ -324,15 +321,15 @@ $lineItemsTable = [
 	<table <?= $tableAttrs; ?> class="invoice-render__totals">
 		<tr>
 			<td>المبلغ الخاضع للضریبة</td>
-			<td><?= zatcaNumberFormatShort($invoice->computeTotalSubtotal()); ?><?= F_UNIT; ?></td>
+			<td><?= zatcaNumberFormatShort($invoice->computeTotalSubtotal()). $formattedCurrency; ?></td>
 		</tr>
 		<tr>
 			<td>ضریبة القیمة المضافة</td>
-			<td><?= zatcaNumberFormatShort($invoice->computeTotalTaxes()); ?><?= F_UNIT; ?></td>
+			<td><?= zatcaNumberFormatShort($invoice->computeTotalTaxes()). $formattedCurrency; ?></td>
 		</tr>
 		<tr>
 			<td>إجمالي المبلغ المستحق</td>
-			<td><?= zatcaNumberFormatShort($invoice->computeTotal()); ?><?= F_UNIT; ?></td>
+			<td><?= zatcaNumberFormatShort($invoice->computeTotal()). $formattedCurrency; ?></td>
 		</tr>
 	</table>
 
