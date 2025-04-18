@@ -71,7 +71,7 @@ $lineItemsTable = [
 		<td style="width:30%;">
             <?= $svgqr; ?>
             <!-- Add your custom SVG here -->
-            <?= file_get_contents(__DIR__ . '/../../../resources/images/custom-logo.svg'); ?>
+            <?= file_get_contents(__DIR__ . '/../../../resources/images/sar.svg'); ?>
         </td>
 			<!-- <td style="width:30%;">
 				<?= $svgqr; ?> -->
