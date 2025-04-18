@@ -15,7 +15,7 @@ const F_UNIT = ' ' . UNIT;
 $svgContent = file_get_contents(__DIR__ . '/../../../resources/images/sar.svg');
 $svgContent = preg_replace(
 	'/<svg([^>]*)>/',
-	'<svg$1 width="16" height="16" style="vertical-align:middle;">',
+	'<svg$1 width="10" height="10" style="vertical-align:middle;">',
 	$svgContent
 );
 $formattedCurrency = ' ' . $svgContent;
