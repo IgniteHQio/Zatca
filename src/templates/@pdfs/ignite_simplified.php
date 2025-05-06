@@ -10,8 +10,10 @@ use function Malik12tree\ZATCA\Utils\zatcaNumberFormatShort;
 
 /** @var Invoice $invoice */
 $tableAttrs = 'cellpadding="5px" autosize="1" border="1" width="100%"';
-const UNIT = 'ريال';
-const F_UNIT = ' ' . UNIT;
+if (!defined('UNIT')) {
+    define('UNIT', 'ريال');
+    define('F_UNIT', ' ' . UNIT);
+}
 $svgContent = file_get_contents(__DIR__ . '/../../../resources/images/sar.svg');
 $svgContent = preg_replace(
 	'/<svg([^>]*)>/',
