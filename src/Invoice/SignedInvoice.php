@@ -71,6 +71,7 @@ class SignedInvoice
                 'qr' => 'data:image/png;base64,'.base64_encode($qrOutput->output($qrCode, 200)),
                 'hasLogo' => $hasLogo = isset($options['logo']) ? (bool) $options['logo'] : false,
                 'transaction' => $options['transaction'] ?? [],
+                'footer_text' => $options['footer_text'] ?? '',
                 //'htmlqr' =>$htmlqrOutput->output($qrCode)
                 'svgqr' =>str_replace('<?xml version="1.0"?>', '', $svgqrOutput->output($qrCode,200))
             ],

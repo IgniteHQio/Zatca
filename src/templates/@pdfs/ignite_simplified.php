@@ -296,6 +296,29 @@ $lineItemsTable = [
 		</tr>
 		<?php endif; ?>
 	</table>
+	<?php
+	$business_id = $transaction->business_id;
+	
+	if ($business_id == 777 || $business_id == 778 || $business_id == 329) {
+		echo '<table ' . $tableAttrs . '>
+				<tr>
+					<th>مرجع سينر</th>
+					<td colspan="4">' . $transaction->custom_field_1 . '</td>
+					<th>Seners reference</th>
+				</tr>
+				<tr>
+					<th>اتفاقية العقد</th>
+					<td colspan="4">' . $transaction->custom_field_2 . '</td>
+					<th>Contract Agreement</th>
+				</tr>
+				<tr>
+					<th></th>
+					<td colspan="4">' . $transaction->custom_field_3 . '</td>
+					<th>رقم أمر الشراء</th>
+				</tr>
+			</table>';
+	} 
+	?>
 	<br />
 
 	<table <?= $tableAttrs; ?>>
@@ -339,6 +362,16 @@ $lineItemsTable = [
 			<td><?= zatcaNumberFormatShort($invoice->computeTotal()). $formattedCurrency; ?></td>
 		</tr>
 	</table>
+	<br />
+	<?php if (!empty($footer_text)): ?>
+	<table <?= $tableAttrs; ?>>
+		<tr>
+			<?= htmlentities($footer_text); ?>
+		</tr>
+	</table>
+	<?php endif; ?>
+	
+	
 
 </div>
 <?php return [
