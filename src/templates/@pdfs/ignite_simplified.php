@@ -368,7 +368,7 @@ $lineItemsTable = [
 	$footer_text = $footer_text;
 	
 	if ($footer_text != '') {
-		echo '<table>
+		echo '<table dir="ltr" style="text-align:left">
 				<tr>
 					<td>' . $footer_text . '</td>
 				</tr>
