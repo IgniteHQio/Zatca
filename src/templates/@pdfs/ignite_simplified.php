@@ -296,6 +296,7 @@ $lineItemsTable = [
 		</tr>
 		<?php endif; ?>
 	</table>
+	<br />
 	<?php
 	$business_id = $transaction->business_id;
 	
@@ -312,9 +313,9 @@ $lineItemsTable = [
 					<th>Contract Agreement</th>
 				</tr>
 				<tr>
-					<th></th>
-					<td colspan="4">' . $transaction->custom_field_3 . '</td>
 					<th>رقم أمر الشراء</th>
+					<td colspan="4">' . $transaction->custom_field_3 . '</td>
+					<th>PO NUMBER</th>
 				</tr>
 			</table>';
 	} 
@@ -363,13 +364,7 @@ $lineItemsTable = [
 		</tr>
 	</table>
 	<br />
-	<?php if (!empty($footer_text)): ?>
-	<table <?= $tableAttrs; ?>>
-		<tr>
-			<?= htmlentities($footer_text); ?>
-		</tr>
-	</table>
-	<?php endif; ?>
+	
 	
 	
 
