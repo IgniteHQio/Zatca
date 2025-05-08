@@ -364,6 +364,17 @@ $lineItemsTable = [
 		</tr>
 	</table>
 	<br />
+	<?php
+	$footer_text = $footer_text;
+	
+	if ($footer_text != 'footer_text') {
+		echo '<table ' . $tableAttrs . '>
+				<tr>
+					<td>' . $footer_text . '</td>
+				</tr>
+			</table>';
+	} 
+	?>
 	
 	
 	
