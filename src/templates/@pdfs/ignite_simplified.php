@@ -299,8 +299,8 @@ $lineItemsTable = [
 	<br />
 	<?php
 	$business_id = $transaction->business_id;
-	
-	if ($business_id == 777 || $business_id == 778 || $business_id == 329) {
+	$type = $invoice->getType();
+	if ($type == 388 && ($business_id == 777 || $business_id == 778 || $business_id == 329)) {
 		echo '<table ' . $tableAttrs . '>
 				<tr>
 					<th>مرجع سينر</th>
