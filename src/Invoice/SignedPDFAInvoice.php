@@ -39,6 +39,12 @@ class SignedPDFAInvoice
         $mpdf->keep_table_proportions = true;
         $mpdf->packTableData = true;
         $mpdf->shrink_tables_to_fit = 1;
+        
+        if($options['footer_text'] != '')
+        {
+            $mpdf->SetHTMLFooter($options['footer_text']);
+        }
+        
 
         if ($resultOptions['hasLogo']) {
             $mpdf->imageVars['logo'] = file_get_contents($options['logo']);

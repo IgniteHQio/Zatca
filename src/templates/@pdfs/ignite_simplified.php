@@ -82,7 +82,7 @@ $lineItemsTable = [
 				<!-- <img src="<?= htmlentities($qr); ?>" alt="QR Code" /> -->
 			</td>
 			<td style="width:70%;">
-				<img style="height:100px; width: 100px;" src="<?= htmlentities($transaction->business->logo); ?>" alt="Business Logo" />
+				<img style="height:100px;" src="<?= htmlentities($transaction->business->logo); ?>" alt="Business Logo" />
 				<?php
 				$type = $invoice->getType();
 				$code = $invoice->getCode();
@@ -240,10 +240,10 @@ $lineItemsTable = [
 		<tr>
 			<th>الرقم الضريبي</th>
 			<td><?= $transaction->contact->tax_number ?></td>
-			<th>.Tin No</th>
+			<th>.TIN No</th>
 			<th>الرقم الضريبي</th>
 			<td><?= $invoice->getVATNumber() ?></td>
-			<th>.Tin No</th>
+			<th>.TIN No</th>
 		</tr>
 		<?php if ($code === "0100000") : ?>
 		<tr>
@@ -363,7 +363,7 @@ $lineItemsTable = [
 			<td><?= zatcaNumberFormatShort($invoice->computeTotal()). $formattedCurrency; ?></td>
 		</tr>
 	</table>
-	<br />
+	<!-- <br />
 	<?php
 	$footer_text = $footer_text;
 	
@@ -374,7 +374,7 @@ $lineItemsTable = [
 				</tr>
 			</table>';
 	} 
-	?>
+	?> -->
 	
 	
 	
