@@ -103,7 +103,8 @@ class SignedPDFAInvoice
 
     public function saveAt($directoryPath)
     {
-        $filePath = $directoryPath.DIRECTORY_SEPARATOR.$this->getInvoice()->attachmentName('pdf');
+        $filename = str_replace('/', '-', $this->getInvoice()->attachmentName('pdf'));
+        $filePath = $directoryPath.DIRECTORY_SEPARATOR.$filename;
         if (!file_exists($directoryPath)) {
             mkdir($directoryPath, 0777, true);
         }
