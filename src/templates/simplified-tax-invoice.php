@@ -170,9 +170,9 @@ $taxTotalRender = Template::render('@simplified-tax-invoice/tax-total', [
     <cac:LegalMonetaryTotal>
         <cbc:LineExtensionAmount currencyID="SAR"><?= zatcaNumberFormatShort($totalSubtotal); ?></cbc:LineExtensionAmount>
         <cbc:TaxExclusiveAmount currencyID="SAR"><?= zatcaNumberFormatNoWarning($totalSubtotal); ?></cbc:TaxExclusiveAmount>
-        <cbc:TaxInclusiveAmount currencyID="SAR"><?= $total = zatcaNumberFormatShort($totalSubtotal + $totalTaxes); ?></cbc:TaxInclusiveAmount>
+        <cbc:TaxInclusiveAmount currencyID="SAR"><?= $total = zatcaNumberFormatShort($totalSubtotal) + zatcaNumberFormatShort($taxesTotal); ?></cbc:TaxInclusiveAmount>
         <cbc:PrepaidAmount currencyID="SAR"><?= 0; ?></cbc:PrepaidAmount>
-        <cbc:PayableAmount currencyID="SAR"><?= zatcaNumberFormatShort(zatcaNumberFormatShort($totalSubtotal) + zatcaNumberFormatShort($taxesTotal)); ?></cbc:PayableAmount>
+        <cbc:PayableAmount currencyID="SAR"><?= zatcaNumberFormatShort($totalSubtotal) + zatcaNumberFormatShort($taxesTotal); ?></cbc:PayableAmount>
     </cac:LegalMonetaryTotal>
 <?php foreach ($LINE_ITEMS as $lineItem) {
     ?>
