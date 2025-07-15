@@ -76,9 +76,9 @@ class SignedPDFInvoice
         $fileName = str_replace('/', '-', $fileName);
 
         $filePath = $directoryPath.DIRECTORY_SEPARATOR. $fileName;
-        if (!file_exists($directoryPath)) {
-            mkdir($directoryPath, 0777, true);
-        }
+        // if (!file_exists($directoryPath)) {
+        //     mkdir($directoryPath, 0777, true);
+        // }
         file_put_contents($filePath, $this->pdf);
     }
 }
