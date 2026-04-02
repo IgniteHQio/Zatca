@@ -24,7 +24,7 @@
         ]
     },
     "require": {
-        "mpdf/mpdf": "8.2.4",
+        "mpdf/mpdf": "^8.2.6",
         "mpdf/qrcode": "1.2.1",
         "webmozart/assert": "^1.11"
     },
