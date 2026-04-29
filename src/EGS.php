@@ -67,6 +67,7 @@ class EGS
     public function generateNewKeysAndCSR($solutionName)
     {
         $privateKey = Crypto::generateSecp256k1KeyPair();
+        $organizationalUnitName = (string) ($this->unit['crn_number'] ?? $this->unit['branch_name']);
 
         $csrConfigFile = tmpfile();
         $csrConfig = Template::render('csr', [
@@ -76,7 +77,7 @@ class EGS
             'VAT_REGISTRATION_NUMBER' => $this->unit['vat_number'],
             'BRANCH_LOCATION' => "{$this->unit['location']['building']} {$this->unit['location']['street']}, {$this->unit['location']['city']}",
             'BRANCH_INDUSTRY' => $this->unit['branch_industry'],
-            'BRANCH_NAME' => $this->unit['branch_name'],
+            'BRANCH_NAME' => $organizationalUnitName,
             'TAXPAYER_NAME' => $this->unit['vat_name'],
             'COMMON_NAME' => $this->unit['common_name'],
             'PRIVATE_KEY_PASS' => 'SET_PRIVATE_KEY_PASS',
@@ -86,7 +87,7 @@ class EGS
         $csrRes = openssl_csr_new(
             [
                 'commonName' => $this->unit['common_name'],
-                'organizationalUnitName' => $this->unit['branch_name'],
+                'organizationalUnitName' => $organizationalUnitName,
                 'organizationName' => $this->unit['vat_name'],
                 'countryName' => 'SA',
             ],
