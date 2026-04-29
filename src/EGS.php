@@ -67,7 +67,7 @@ class EGS
     public function generateNewKeysAndCSR($solutionName)
     {
         $privateKey = Crypto::generateSecp256k1KeyPair();
-        $organizationalUnitName = (string) ($this->unit['crn_number'] ?? $this->unit['branch_name']);
+        $organizationalUnitName = (string) ($this->unit['tin_number'] ?? $this->unit['crn_number'] ?? $this->unit['branch_name']);
 
         $csrConfigFile = tmpfile();
         $csrConfig = Template::render('csr', [
